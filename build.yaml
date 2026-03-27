@@ -1,17 +1,17 @@
 include:
-  # 1. The Dongle (With all custom display and central settings injected)
+  # 1. The Dongle
   - board: nice_nano//zmk
     shield: lily58_left dongle_display
-    cmake-args: "-DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2 -DCONFIG_ZMK_DISPLAY=y -DCONFIG_ZMK_DONGLE_DISPLAY_CUSTOM_SCREEN=y -DCONFIG_ZMK_DONGLE_DISPLAY_BONGO_CAT=y"
+    cmake-args: -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2 -DCONFIG_ZMK_DISPLAY=y -DCONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y -DCONFIG_ZMK_DONGLE_DISPLAY_CUSTOM_SCREEN=y -DCONFIG_ZMK_DONGLE_DISPLAY_BONGO_CAT=y
     artifact-name: dongle
 
-  # 2. The Physical Left Half (Forced peripheral)
+  # 2. The Physical Left Half
   - board: nice_nano//zmk
     shield: lily58_left
-    cmake-args: "-DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n"
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     artifact-name: left_peripheral
 
-  # 3. The Physical Right Half (Peripheral by default)
+  # 3. The Physical Right Half
   - board: nice_nano//zmk
     shield: lily58_right
     artifact-name: right_peripheral
