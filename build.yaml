@@ -2,7 +2,7 @@ include:
   # 1. The Dongle
   - board: nice_nano//zmk
     shield: lily58_left dongle_display
-    cmake-args: -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2 -DCONFIG_ZMK_DISPLAY=y -DCONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y -DCONFIG_ZMK_DONGLE_DISPLAY_CUSTOM_SCREEN=y -DCONFIG_ZMK_DONGLE_DISPLAY_BONGO_CAT=y
+    cmake-args: -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2 -DCONFIG_ZMK_DISPLAY=y
     artifact-name: dongle
 
   # 2. The Physical Left Half
