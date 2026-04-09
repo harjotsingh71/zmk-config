@@ -4,6 +4,7 @@
 
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <layouts/kata0510/lily58.dtsi>
+#include <zephyr/dt-bindings/zmk/split_interrupt.h>
 
 / {
     chosen {
