@@ -6,8 +6,8 @@ include:
 
   # Left half (peripheral) - connects to dongle over BLE
   - board: nice_nano//zmk
-    shield: lily58_left
+    shield: lily58_left nice_view_adapter nice_view
 
   # Right half (peripheral) - connects to dongle over BLE
   - board: nice_nano//zmk
-    shield: lily58_right
+    shield: lily58_right nice_view_adapter nice_view
