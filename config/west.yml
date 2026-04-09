@@ -1,3 +1,16 @@
+---
+# External ZMK modules to pull in at build time.
+#
+# englmaxi/zmk-dongle-display replaces the built-in ZMK widgets with a
+# proper status screen showing:
+#   - USB/BLE connection state
+#   - Layer name
+#   - Both peripheral battery percentages
+#   - Active modifier keys (Ctrl/Shift/Alt/GUI)
+#   - Bongo cat WPM animation
+#
+# Works with 0.96" SSD1306 128x64.
+# Repo: https://github.com/englmaxi/zmk-dongle-display
 manifest:
   remotes:
     - name: zmkfirmware
