@@ -1,0 +1,13 @@
+---
+include:
+  # Dongle (central) - plug this into USB, holds keymap, drives display
+  - board: promicro_nrf52840
+    shield: dongle
+
+  # Left half (peripheral) - connects to dongle over BLE
+  - board: promicro_nrf52840
+    shield: lily58_left
+
+  # Right half (peripheral) - connects to dongle over BLE
+  - board: promicro_nrf52840
+    shield: lily58_right
