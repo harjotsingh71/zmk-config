@@ -1,13 +1,13 @@
 ---
 include:
   # Dongle (central) - plug this into USB, holds keymap, drives display
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: dongle
 
   # Left half (peripheral) - connects to dongle over BLE
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: lily58_left
 
   # Right half (peripheral) - connects to dongle over BLE
-  - board: nice_nano
+  - board: nice_nano//zmk
     shield: lily58_right
