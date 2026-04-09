@@ -1,0 +1,6 @@
+/*
+ * Dongle keymap — includes the shared lily58 keymap.
+ * Edit lily58.keymap to change bindings; this file just
+ * points the dongle build at the right keymap.
+ */
+#include "lily58.keymap"
