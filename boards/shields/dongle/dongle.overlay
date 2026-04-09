@@ -1,41 +1,59 @@
 /*
  * Lily58 Dongle — Hardware Overlay
- *
- * Defines:
- *   - Mock kscan (no physical keys on the dongle)
- *   - SSD1306 128x64 OLED over I2C
- *
- * WIRING (solder your SSD1306 to these pins on the ProMicro NRF52840):
- *   SSD1306 VCC  →  VCC (3.3V)
- *   SSD1306 GND  →  GND
- *   SSD1306 SDA  →  SDA pin (D2)
- *   SSD1306 SCL  →  SCL pin (D3)
- *
- * If your display doesn't show up, the most likely cause is the I2C pin
- * numbers below not matching your specific board's pin mapping.
- * Check your ProMicro NRF52840 pinout and adjust NRF_PSEL values.
  */
 
-#include <dt-bindings/zmk/matrix_transform.h>
-
-/*
- * Display (SSD1306) is not wired yet.
- * When ready to add the display, uncomment the pinctrl and i2c0 blocks,
- * and add zephyr,display = &oled back to the chosen node.
- * Wiring: VCC→VCC, GND→GND, SDA→pad 017, SCL→pad 020
- */
+/* Import the official Lily58 hardware definition (matrix and physical layout) */
+#include <boards/shields/lily58/lily58.dtsi>
 
 / {
     chosen {
         zmk,kscan = &mock_kscan;
+        
+        /* * UNCOMMENT THE LINE BELOW WHEN YOUR DISPLAY IS SOLDERED 
+         */
+        // zephyr,display = &oled;
     };
 
-    /*
-     * Mock kscan — required by ZMK to compile, but fires no events.
-     * All key input comes from the two BLE peripheral halves.
-     */
+    /* Define the mock scanner with the correct Lily58 matrix dimensions */
     mock_kscan: kscan {
         compatible = "zmk,kscan-mock";
+        columns = <6>;
+        rows = <5>;
         events = <0>;
     };
 };
+
+/* Tell the official Lily58 layout to use our mock scanner so ZMK Studio is happy */
+&default_layout {
+    kscan = <&mock_kscan>;
+};
+
+/* ===================================================================
+ * OLED DISPLAY CONFIGURATION (SSD1306 128x64)
+ * Delete the /* and */ /* tags around this block when you solder the screen.
+ * * nice!nano Wiring:
+ * VCC -> VCC (3.3v)
+ * GND -> GND
+ * SDA -> D2 (P0.17)
+ * SCL -> D3 (P0.20)
+ * =================================================================== */
+/*
+&pro_micro_i2c {
+    status = "okay";
+
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <64>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <63>;
+        segment-remap;
+        com-invdir;
+        inversion-on;
+        prechargep = <0x22>;
+    };
+};
+*/
