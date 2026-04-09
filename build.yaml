@@ -11,3 +11,7 @@ include:
   # Right half (peripheral) - connects to dongle over BLE
   - board: nice_nano//zmk
     shield: lily58_right nice_view_adapter nice_view
+
+  # Wipe it all
+  - board: nice_nano//zmk
+    shield: settings_reset
