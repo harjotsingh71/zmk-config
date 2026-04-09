@@ -1,0 +1,14 @@
+if SHIELD_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "Lily58"
+
+# Two BLE peripherals: left half + right half
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+# Enable the mock kscan driver (dongle has no physical keys)
+config ZMK_KSCAN_MOCK_DRIVER
+    default y
+
+endif # SHIELD_DONGLE
