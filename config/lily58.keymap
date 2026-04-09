@@ -11,10 +11,10 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 
 / {
     keymap {
@@ -35,13 +35,14 @@
          *                   | GUI | ALT | LWR |CTRL |SPC  | RSE | ALT | GUI |
          *                   `-----'-----'-----'-----'-----'-----'-----'-----'
          */
+
         default_layer {
             bindings = <
-&kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                       &kp N6  &kp N7   &kp N8    &kp N9   &kp N0   &kp GRAVE
-&kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                        &kp Y   &kp U    &kp I     &kp O    &kp P    &kp MINUS
-&kp CAPS  &kp A  &kp S  &kp D    &kp F    &kp G                        &kp H   &kp J    &kp K     &kp L    &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B  &kp LBKT   &kp RBKT  &kp N   &kp M    &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                         &kp LGUI &kp LALT &mo 1  &kp LCTRL  &kp SPACE &mo 2   &kp RALT &kp RGUI
+&kp ESC    &kp N1  &kp N2  &kp N3        &kp N4  &kp N5                             &kp N6     &kp N7  &kp N8     &kp N9   &kp N0    &kp GRAVE
+&kp TAB    &kp Q   &kp W   &kp E         &kp R   &kp T                              &kp Y      &kp U   &kp I      &kp O    &kp P     &kp BACKSPACE
+&kp LCTRL  &kp A   &kp S   &kp D         &kp F   &kp G                              &kp H      &kp J   &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z   &kp X   &kp C         &kp V   &kp B      &kp LBKT     &kp RBKT   &kp N      &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                           &kp LEFT_ALT  &mo 1   &kp ENTER  &kp LCTRL    &kp SPACE  &kp SPACE  &mo 2   &kp RGUI
             >;
         };
 
@@ -61,13 +62,14 @@
          *                   |     |     |     |     |      |     |     |     |
          *                   `-----'-----'-----'-----'------'-----'-----'-----'
          */
+
         lower_layer {
             bindings = <
-&trans  &kp F1    &kp F2    &kp F3    &kp F4    &kp F5                       &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &trans
-&trans  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                    &kp CARET &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &trans
-&trans  &trans    &trans    &trans    &trans    &trans                       &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-&trans  &trans    &trans    &trans    &trans    &trans    &trans    &trans   &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
-                            &trans    &trans    &trans    &trans    &trans   &trans    &trans    &trans
+&trans  &kp F1        &kp F2        &kp F3        &kp F4        &kp F5                          &kp F6     &kp F7     &kp F8    &kp F9    &kp F10   &trans
+&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &trans
+&trans  &trans        &trans        &trans        &trans        &trans                          &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
+&trans  &trans        &trans        &trans        &trans        &trans        &trans    &trans  &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
+                                    &trans        &trans        &trans        &trans    &trans  &trans     &trans     &trans
             >;
         };
 
@@ -87,13 +89,14 @@
          *                   |     |     |     |     |      |     |     |     |
          *                   `-----'-----'-----'-----'------'-----'-----'-----'
          */
+
         raise_layer {
             bindings = <
-&trans        &trans        &trans        &trans        &trans        &trans                       &trans &trans &trans &trans &trans &trans
-&ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF  &trans &trans &trans &trans &trans &trans
-&trans        &rgb_ug RGB_BRD &rgb_ug RGB_BRI &trans  &trans        &trans                       &trans &trans &trans &trans &trans &trans
-&trans        &trans        &trans        &trans        &trans        &trans  &trans    &trans     &trans &trans &trans &trans &trans &trans
-                                          &trans        &trans        &trans  &trans    &trans     &trans &trans &trans
+&trans             &trans           &trans           &trans           &trans           &trans                             &trans        &trans          &trans          &trans           &trans  &trans
+&ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFF                    &trans        &trans          &kp UP_ARROW    &trans           &trans  &kp DELETE
+&trans             &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &trans           &trans           &trans                             &trans        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans
+&trans             &trans           &trans           &trans           &trans           &trans           &trans    &trans  &trans        &trans          &trans          &trans           &trans  &trans
+                                                     &trans           &trans           &trans           &trans    &trans  &kp C_VOL_DN  &trans          &kp C_VOL_UP
             >;
         };
     };
