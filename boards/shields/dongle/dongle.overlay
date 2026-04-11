@@ -49,7 +49,3 @@
 &kata0510_lily58_layout {
     transform = <&default_transform>;
 };
-
-&led0 {
-    status = "disabled";
-};
