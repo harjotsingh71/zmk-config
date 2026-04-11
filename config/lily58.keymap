@@ -17,6 +17,15 @@
 #include <dt-bindings/zmk/rgb.h>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        bootloader {
+            bindings = <&bootloader>;
+            key-positions = <56 47 57>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
