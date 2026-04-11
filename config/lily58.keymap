@@ -22,7 +22,7 @@
 
         bootloader {
             bindings = <&bootloader>;
-            key-positions = <56 47 57>;
+            key-positions = <24 36 49>;
         };
     };
 
