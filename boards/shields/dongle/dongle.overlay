@@ -34,5 +34,5 @@
 };
 
 &kata0510_lily58_layout {
-    transform = <&lily58_layout_all_transform>;
+    transform = <&default_transform>;
 };
