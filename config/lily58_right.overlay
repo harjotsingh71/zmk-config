@@ -1,0 +1,20 @@
+#include <dt-bindings/zmk/pointing.h>
+
+/* Wake up the default Lily58 I2C bus */
+&pro_micro_i2c {
+    status = "okay";
+
+    trackpad: iqs5xx@44 {
+        compatible = "azoteq,iqs5xx";
+        reg = <0x44>;
+        /* CS pin mapped to Pro Micro Pin 1 */
+        rdy-gpios = <&pro_micro 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; 
+    };
+};
+
+/ {
+    trackpad_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackpad>;
+    };
+};
