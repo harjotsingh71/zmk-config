@@ -1,20 +1,37 @@
 #include <dt-bindings/zmk/pointing.h>
 
-/* Wake up the default Lily58 I2C bus */
-&pro_micro_i2c {
+/* 1. Hijack the SPI pins and reassign them to I2C */
+&pinctrl {
+    i2c0_custom: i2c0_custom {
+        group1 {
+            /* Route SDA to the header's 'SI' pin (P1.15) */
+            psels = <NRF_PSEL(TWIM_SDA, 1, 15)>,
+            /* Route SCL to the header's 'SCLK' pin (P1.13) */
+                    <NRF_PSEL(TWIM_SCL, 1, 13)>;
+        };
+    };
+    i2c0_custom_sleep: i2c0_custom_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 15)>,
+                    <NRF_PSEL(TWIM_SCL, 1, 13)>;
+            low-power-enable;
+        };
+    };
+};
+
+/* 2. Apply the custom pins to the I2C bus and define the trackpad */
+&i2c0 {
     status = "okay";
+    compatible = "nordic,nrf-twim";
+    pinctrl-0 = <&i2c0_custom>;
+    pinctrl-1 = <&i2c0_custom_sleep>;
+    pinctrl-names = "default", "sleep";
+    clock-frequency = <I2C_BITRATE_FAST>;
 
     trackpad: iqs5xx@44 {
         compatible = "azoteq,iqs5xx";
         reg = <0x44>;
-        /* CS pin mapped to Pro Micro Pin 1 */
-        rdy-gpios = <&pro_micro 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; 
-    };
-};
-
-/ {
-    trackpad_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackpad>;
+        /* Route RDY to the header's 'SCS' pin (Pro Micro 1) */
+        drdy-gpios = <&pro_micro 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; 
     };
 };
