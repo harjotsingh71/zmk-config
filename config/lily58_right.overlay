@@ -33,7 +33,7 @@
         status = "okay";
         reg = <0x74>;
         /* Route RDY to the header's 'SCS' pin (Pro Micro 1) */
-        drdy-gpios = <&pro_micro 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; 
+        int-gpios = <&pro_micro 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; 
     };
 };
 / {
