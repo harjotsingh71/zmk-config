@@ -28,7 +28,7 @@
     pinctrl-names = "default", "sleep";
     clock-frequency = <I2C_BITRATE_FAST>;
 
-    trackpad: iqs5xx@44 {
+    trackpad: iqs5xx@74 {
         compatible = "azoteq,iqs5xx";
         reg = <0x74>;
         /* Route RDY to the header's 'SCS' pin (Pro Micro 1) */
