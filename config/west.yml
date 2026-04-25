@@ -1,4 +1,3 @@
----
 # External ZMK modules to pull in at build time.
 #
 # englmaxi/zmk-dongle-display replaces the built-in ZMK widgets with a
@@ -17,6 +16,9 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: englmaxi
       url-base: https://github.com/englmaxi
+    # Add the remote for the trackpad driver
+    - name: ergohaven
+      url-base: https://github.com/ergohaven
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -24,6 +26,10 @@ manifest:
       import: app/west.yml
     - name: zmk-dongle-display
       remote: englmaxi
+      revision: main
+    # Add the driver module to the build
+    - name: zmk-driver-azoteq-iqs5xx
+      remote: ergohaven
       revision: main
   self:
     path: config
